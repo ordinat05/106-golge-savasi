@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* 🍀 This Component App.jsx */}
+      🍀 This Component App.jsx
       <Board />
     </div>
   )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./Board.css"
+import Cell from './Cell'
 
 class Board extends Component {
 	static defaultProps = {
@@ -35,12 +36,19 @@ class Board extends Component {
 				board[y][x] = !board[y][x]
 			}
 		}
+		flipCell(y, x)
+		flipCell(y, x - 1)
+		flipCell(y, x + 1)
+		flipCell(y - 1, x)
+		flipCell(y + 1, x)
 	}
 
 	render() {
 		return (
 			<div>
+				🍀 This Component Board.jsx
 				<h1>Gölge Yoket</h1>
+				<Cell />
 			</div>
 		)
 	}
