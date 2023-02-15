@@ -45,8 +45,7 @@ class Board extends Component {
 		let hasWon = board.every((row) => row.every((cell) => !cell))
 		this.setState({ board: board, hasWon: hasWon })
 	}
-
-	render() {
+	makeTable() {
 		let tblBoard = []
 		for (let y = 0; y < this.props.nrows; y++) {
 			let row = []
@@ -61,30 +60,46 @@ class Board extends Component {
 			}
 			tblBoard.push(<tr key={y}>{row}</tr>)
 		}
-		if (this.state.hasWon) {
-			return (
-				<div className="Board-title">
-					<div className="winner">
-						<span className="neon-orange">Tebrikler </span>
-						<span className="neon-blue">Kazandınız </span>
-					</div>
-				</div>
-			)
-		}
+		return (
+			<table className='Board'>
+				<tbody>{tblBoard}</tbody>
+			</table>
+		)
+	}
+
+	render() {
+		// if (this.state.hasWon) {
+		// 	return (
+		// 		<div className="Board-title">
+
+		// 		</div>
+		// 	)
+		// }
 
 		return (
 			<div>
-				<div className="Board-title">
-					<div className="neon-orange">
-						Golge
+				{this.state.hasWon ? (
+					<div className="winner">
+						<div className="neon-orange">Tebrikler </div>
+						<div className="neon-blue">Kazandınız </div>
 					</div>
-					<div className="neon-blue">Savaşı</div>
+				) : (<div>
+					<div className="Board-title">
+						<div className="neon-orange">
+							Golge
+						</div>
+						<div className="neon-blue">&nbsp; YOKET</div></div>
+					{this.makeTable()}
 				</div>
-				<table className='Board'>
-					<tbody>
-						{tblBoard}
-					</tbody>
-				</table>
+				)}
+				{/* <div>
+					<div className="Board-title">
+						<div className="neon-orange">
+							Golge
+						</div>
+						<div className="neon-blue">Savaşı</div>
+					</div>
+				</div> */}
 			</div>
 		)
 	}
