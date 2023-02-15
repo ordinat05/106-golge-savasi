@@ -10,7 +10,7 @@ class Cell extends Component {
 		this.props.flipCellAroundMe()
 	}
 	render() {
-		let classes = "Cell" + (this.props.isLit ? "Cell-lit" : "")
+		let classes = "Cell" + (this.props.isLit ? " Cell-lit" : "")
 		return (
 			<td className={classes} onClick={this.handleClick} />
 		)
