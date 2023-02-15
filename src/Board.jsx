@@ -12,7 +12,7 @@ class Board extends Component {
 		super(props)
 		this.state = {
 			hasWon: false,
-			bord: this.createBoard(),
+			board: this.createBoard(),
 		}
 	}
 	createBoard() {
@@ -41,6 +41,9 @@ class Board extends Component {
 		flipCell(y, x + 1)
 		flipCell(y - 1, x)
 		flipCell(y + 1, x)
+
+		let hasWon = board.every((row) => row.every((cell) => !cell))
+		this.setState({ board: board, hasWon: hasWon })
 	}
 
 	render() {
