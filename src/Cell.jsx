@@ -7,15 +7,13 @@ class Cell extends Component {
 		this.handleClick = this.handleClick.bind(this)
 	}
 	handleClick(e) {
-		this.
+		this.props.flipCellAroundMe()
 	}
 	render() {
-		// return (
-		// 	<div>
-		// 		🍀 This Component Cell.jsx
-		// 		<h1>Cell</h1>
-		// 	</div>
-		// )
+		let classes = "Cell" + (this.props.isLit ? "Cell-lit" : "")
+		return (
+			<td className={classes} onClick={this.handleClick} />
+		)
 	}
 }
 export default Cell

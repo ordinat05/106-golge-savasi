@@ -47,11 +47,44 @@ class Board extends Component {
 	}
 
 	render() {
+		let tblBoard = []
+		for (let y = 0; y < this.props.nrows; y++) {
+			let row = []
+			for (let x = 0; x < this.props.ncols; x++) {
+				let coord = `${y}-${x}`
+				row.push(
+					<Cell
+						key={coord}
+						isLit={this.state.board[y][x]}
+						flipCellAroundMe={() => this.flipCellsAround(coord)} />
+				)
+			}
+			tblBoard.push(<tr key={y}>{row}</tr>)
+		}
+		if (this.state.hasWon) {
+			return (
+				<div className="Board-title">
+					<div className="winner">
+						<span className="neon-orange">Tebrikler </span>
+						<span className="neon-blue">Kazandınız </span>
+					</div>
+				</div>
+			)
+		}
+
 		return (
 			<div>
-				🍀 This Component Board.jsx
-				<h1>Gölge Yoket</h1>
-				<Cell />
+				<div className="Board-title">
+					<div className="neon-orange">
+						Golge
+					</div>
+					<div className="neon-blue">Savaşı</div>
+				</div>
+				<table className='Board'>
+					<tbody>
+						{tblBoard}
+					</tbody>
+				</table>
 			</div>
 		)
 	}
